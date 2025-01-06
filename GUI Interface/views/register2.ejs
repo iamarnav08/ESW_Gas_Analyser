@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secrets - Register</title>
+
+  <!-- Google Fonts and Boxicons CSS -->
+  <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap' rel='stylesheet'>
+  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+  <style>
+    /* Google Fonts - Poppins */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #4070f4;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 430px;
+      padding: 30px;
+      background: #FFF;
+      border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    header {
+      font-size: 28px;
+      font-weight: 600;
+      color: #232836;
+      text-align: center;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group .input-field {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 15px 15px 15px 40px;
+      font-size: 16px;
+      border: 1px solid #CACACA;
+      border-radius: 6px;
+      outline: none;
+    }
+
+    .form-group input:focus {
+      border-color: #4070f4;
+      border-bottom-width: 2px;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 15px;
+      font-size: 18px;
+      color: #8b8b8b;
+    }
+
+    .eye-icon {
+      position: absolute;
+      right: 15px;
+      font-size: 18px;
+      color: #8b8b8b;
+      cursor: pointer;
+    }
+
+    .button-field {
+      margin-top: 10px;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      background-color: #0171d3;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #016dcb;
+    }
+
+    .form-link {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .form-link a {
+      color: #0171d3;
+      text-decoration: none;
+    }
+
+    .form-link a:hover {
+      text-decoration: underline;
+    }
+
+    .line {
+      position: relative;
+      height: 1px;
+      background-color: #d4d4d4;
+      margin: 36px 0;
+    }
+
+    .line::before {
+      content: 'Or';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #FFF;
+      color: #8b8b8b;
+      padding: 0 15px;
+    }
+
+    .social-block {
+      text-align: center;
+    }
+
+    .social-block a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      border: 1px solid #CACACA;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      color: #232836;
+      transition: background-color 0.3s ease;
+    }
+
+    .social-block a:hover {
+      background-color: #f4f4f4;
+    }
+
+    .google-img {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>Register</header>
+    <form action="/register" method="POST">
+      <div class="form-group">
+        <div class="input-field">
+          <span class="input-icon">
+            <i class='bx bx-user'></i>
+          </span>
+          <input type="text" name="username" placeholder="Username" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-field">
+          <span class="input-icon">
+            <i class='bx bx-envelope'></i>
+          </span>
+          <input type="email" name="email" placeholder="Email" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-field">
+          <span class="input-icon">
+            <i class='bx bx-lock'></i>
+          </span>
+          <input type="password" name="password" placeholder="Password" required>
+          <i class='bx bx-hide eye-icon'></i>
+        </div>
+      </div>
+      <div class="button-field">
+        <button type="submit">Register</button>
+      </div>
+    </form>
+
+    <div class="line"></div>
+
+    <div class="social-block">
+      <a href="/auth/google" class="field google">
+        <img src="google.png" alt="Google" class="google-img">
+        <span>Sign Up with Google</span>
+      </a>
+    </div>
+
+    <div class="form-link">
+      <span>Already have an account? <a href="/login">Login</a></span>
+    </div>
+  </div>
+
+  <!-- JavaScript for toggling password visibility -->
+  <script>
+    const pwShowHide = document.querySelectorAll(".eye-icon");
+
+    pwShowHide.forEach(eyeIcon => {
+      eyeIcon.addEventListener("click", () => {
+        let pwField = eyeIcon.previousElementSibling;
+
+        if (pwField.type === "password") {
+          pwField.type = "text";
+          eyeIcon.classList.replace("bx-hide", "bx-show");
+        } else {
+          pwField.type = "password";
+          eyeIcon.classList.replace("bx-show", "bx-hide");
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

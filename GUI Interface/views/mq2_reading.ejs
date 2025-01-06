@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESW Project - Integrated Gas Analyzer</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General page styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #f5f7fa, #c3cfe2); /* Soft gradient background */
+            color: #333; /* Neutral text color for readability */
+        }
+
+        header {
+            background-color: #2d3e50; /* Dark muted blue for the header */
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 2s ease-in;
+        }
+
+        .project-title {
+            font-size: 36px;
+            color: #fff; /* White text for contrast with the dark header */
+            text-align: center;
+            animation: slideIn 1s ease-out;
+        }
+
+        .team-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .team-logo {
+            width: 100px;
+            margin-right: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        .sensor-section {
+            margin: 50px auto;
+            max-width: 800px;
+            background-color: rgba(255, 255, 255, 0.8); /* Light translucent background for contrast */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #2d3e50; /* Muted blue for headings */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sensor_canvas iframe {
+            margin-left: 15vh;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            border: 2px solid #2d3e50; /* Soft contrast border */
+        }
+
+        .sensor_canvas iframe:hover {
+            transform: scale(1.05);
+        }
+
+        hr.styled-hr {
+            border: none;
+            height: 3px;
+            background: #2d3e50; /* Match header and headings */
+            margin: 40px auto;
+            width: 80%;
+            animation: stretch 1s ease-in-out;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes stretch {
+            from {
+                width: 0%;
+            }
+            to {
+                width: 80%;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+            }
+
+            .sensor_canvas iframe {
+                width: 100%;
+            }
+
+            .team-logo {
+                width: 80px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with team logo and name -->
+    <header>
+        <div>
+            <h1 class="project-title">ESW Project - Integrated Gas Analyzer</h1>
+        </div>
+        <div class="team-info">
+            <img src="team_logo.png" alt="Team Logo" class="team-logo"> <!-- Replace 'team_logo.png' with the actual logo -->
+        </div>
+    </header>
+
+    <!-- Section for Sensor 1 -->
+    <section class="sensor-section">
+        <h2>Carbon Monoxide</h2>
+        <div class="sensor_canvas" id="sensor1-canvas">
+            <!-- <iframe width="450" height="260" src="https://thingspeak.com/channels/2650734/charts/1?bgcolor=%23ffffff&color=%233b82f6&dynamic=true&results=60&type=line&update=15"></iframe> -->
+            <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2687973/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=10&type=line"></iframe>
+        </div>
+    </section>
+
+    <hr class="styled-hr">
+
+    <!-- Section for Sensor 2 -->
+    <section class="sensor-section">
+        <h2>Smoke</h2>
+        <div class="sensor_canvas" id="sensor2-canvas">
+            <!-- <iframe width="450" height="260" src="https://thingspeak.com/channels/2650734/charts/2?bgcolor=%23ffffff&color=%23ef4444&dynamic=true&results=60&title=Smoke&type=line"></iframe> -->
+            <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2687973/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=10&type=line"></iframe>
+        </div>
+    </section>
+
+    <hr class="styled-hr">
+
+    <!-- Section for Sensor 3 -->
+    <section class="sensor-section">
+        <h2>LPG</h2>
+        <div class="sensor_canvas" id="sensor3-canvas">
+            <!-- <iframe width="450" height="260" src="https://thingspeak.com/channels/2650734/charts/3?bgcolor=%23ffffff&color=%23f59e0b&dynamic=true&results=60&title=LPG&type=line&yaxis=LPG+%28ppm%29"></iframe> -->
+            <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2687973/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=10&type=line"></iframe>
+        </div>
+    </section>
+
+    <script>
+        // JavaScript code for sensor data could go here
+    </script>
+</body>
+</html>

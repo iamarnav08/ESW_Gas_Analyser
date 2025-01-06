@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secrets - Login</title>
+
+  <!-- Font Awesome, Bootstrap, and Boxicons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+
+  <style>
+    /* Updated styles from second code */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #4070f4;
+    }
+    .container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #4070f4;
+      padding: 15px;
+    }
+
+    .form {
+      max-width: 400px;
+      width: 100%;
+      padding: 30px;
+      border-radius: 6px;
+      background: #FFF;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    header {
+      font-size: 28px;
+      font-weight: 600;
+      color: #232836;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form .field {
+      position: relative;
+      height: 50px;
+      width: 100%;
+      margin-top: 20px;
+      border-radius: 6px;
+    }
+
+    .field input {
+      height: 100%;
+      width: 100%;
+      padding: 0 15px;
+      border: 1px solid #CACACA;
+      border-radius: 6px;
+      font-size: 16px;
+      outline: none;
+      transition: border-bottom-width 0.3s ease;
+    }
+
+    .field input:focus {
+      border-color: #0171d3;
+      border-bottom-width: 2px;
+    }
+
+    .eye-icon {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: #8b8b8b;
+      cursor: pointer;
+    }
+
+    .field button {
+      height: 100%;
+      width: 100%;
+      color: #fff;
+      background-color: #0171d3;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .field button:hover {
+      background-color: #016dcb;
+    }
+
+    .form-link {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .form-link span,
+    .form-link a {
+      font-size: 14px;
+      font-weight: 400;
+      color: #232836;
+    }
+
+    .form a {
+      color: #0171d3;
+      text-decoration: none;
+    }
+
+    .form a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="container">
+    <div class="form">
+      <header>Login</header>
+      <!-- Makes POST request to /login route -->
+      <form action="/login" method="POST">
+        <div class="field">
+          <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
+        </div>
+        <div class="field">
+          <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+        </div>
+        <div class="field">
+          <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+          <i class='bx bx-hide eye-icon'></i>
+        </div>
+        <div class="field">
+          <button type="submit">Login</button>
+        </div>
+      </form>
+      <div class="form-link">
+        <span>Don't have an account? <a href="#" class="link signup-link">Signup</a></span>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const pwShowHide = document.querySelector(".eye-icon");
+
+    pwShowHide.addEventListener("click", () => {
+      const password = document.querySelector("#password");
+      if (password.type === "password") {
+        password.type = "text";
+        pwShowHide.classList.replace("bx-hide", "bx-show");
+      } else {
+        password.type = "password";
+        pwShowHide.classList.replace("bx-show", "bx-hide");
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gas Analyzer Project - Team ESW</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* General Reset and Body Styling */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Arial", sans-serif;
+        background-color: #f5f5f5;
+        line-height: 1.6;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Header Styling */
+      header {
+        background-color: #2c3e50;
+        padding: 20px;
+        color: white;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .team-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .team-logo {
+        width: 250px;
+        height: 80px;
+        margin-right: 20px;
+      }
+
+      .team-name {
+        font-size: 36px;
+        font-weight: bold;
+      }
+
+      /* Navigation Bar */
+      .navigation {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .navigation a {
+        color: #ecf0f1;
+        text-decoration: none;
+        font-size: 18px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        line-height: 30px; /* Ensures links are vertically aligned */
+      }
+
+      .navigation a:hover {
+        background-color: #34495e;
+      }
+
+      /* Dropdown Menu for Sensors */
+      .sensors {
+        position: relative;
+        line-height: 30px; /* Adjust to match the height of other links */
+      }
+
+      .dropdown {
+        display: none;
+        position: absolute;
+        top: 100%; /* Position the dropdown just below the 'Sensors' link */
+        left: 0; /* Align dropdown with the 'Sensors' link */
+        background-color: #34495e;
+        min-width: 160px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+      }
+
+      .dropdown a {
+        color: #ecf0f1;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+
+      .dropdown a:hover {
+        background-color: #2c3e50;
+      }
+
+      /* Show dropdown on hover */
+      .navigation .sensors:hover .dropdown {
+        display: block; /* Show dropdown when hovering over 'Sensors' */
+      }
+
+      /* Hero Section */
+      .hero {
+        background-color: #e6e6fa;
+        padding: 50px 20px;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+        margin-bottom: 10px;
+      }
+
+      .hero p {
+        font-size: 18px;
+        margin-top: 0;
+      }
+
+      /* Main Content Styling */
+      main {
+        margin: 20px;
+      }
+
+      /* Section Styling */
+      section {
+        margin-bottom: 40px;
+      }
+
+      section h2 {
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #2c3e50;
+      }
+
+      /* About Section Styling */
+      #about,
+      #team,
+      #sensors {
+        background-color: #ecf0f1;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .sensors {
+        padding: 20px;
+      }
+
+      #about p,
+      #team p,
+      #sensors p {
+        font-size: 18px;
+        color: #34495e;
+      }
+
+      #sensors ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      #sensors ul li {
+        background-color: #bdc3c7;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 8px;
+        font-size: 18px;
+      }
+
+      /* Sensor Overview */
+      .sensor-overview {
+        display: flex;
+        justify-content: space-around;
+        padding: 40px 20px;
+        background-color: #bdc3c7;
+      }
+
+      .sensor-box {
+        width: 30%;
+        background-color: #f8f8ff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .sensor-box:hover {
+        transform: translateY(-5px);
+      }
+
+      .sensor-box h2 {
+        font-size: 24px;
+        color: #6a5acd;
+      }
+
+      .sensor-box p {
+        font-size: 16px;
+      }
+
+      /* Footer Styling */
+      footer {
+        background-color: #2c3e50;
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+      .navigation a.logout {
+        color: #ffffff; /* White text */
+        transition: background-color 0.3s ease;
+      }
+  
+      .navigation a.logout:hover {
+        background-color: #34495e; /* Darker red on hover */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header with team logo and name -->
+    <header>
+      <div class="team-header">
+        <img src="team_logo.png" alt="Team Logo" class="team-logo" />
+        <!-- Replace with actual logo path -->
+        <h1 class="team-name">Team ESW - Gas Analyzer Project</h1>
+      </div>
+      <nav class="navigation">
+        <a href="#about">About the Project</a>
+        <a href="#team">Our Team</a>
+        <div class="sensors">
+          <!-- Added class 'sensors' to this div -->
+          <a href="#">Sensors</a>
+          <div class="dropdown">
+            <a href="mq2_reading">MQ-2 Sensor</a>
+            <a href="mq7_reading">MQ-7 Sensor</a>
+            <a href="mq135_reading">MQ-135 Sensor</a>
+          </div>
+        </div>
+        <a href="#contact">Contact Us</a>
+        <a href="/logout" class="logout">Logout</a>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Welcome to the Integrated Gas Analyzer Project</h1>
+      <p>
+        Our project focuses on detecting harmful gases in the environment using
+        advanced sensor technology.
+      </p>
+    </section>
+
+    <!-- Main Section -->
+    <main>
+      <!-- About the Project Section -->
+      <section id="about">
+        <h2>About the Project</h2>
+        <p>
+          The Gas Analyzer project aims to provide a comprehensive solution for
+          monitoring air quality by detecting the levels of harmful gases in the
+          environment. Using advanced sensors for Carbon Monoxide (CO), Smoke,
+          and LPG, our system helps in creating safer living spaces by alerting
+          users when gas concentrations reach hazardous levels.
+        </p>
+        <p>
+          Our system integrates IoT technology to continuously monitor gas
+          levels in real-time and display the data on an easy-to-use web
+          interface. The project is designed to provide valuable insights for
+          industrial use as well as home safety.
+        </p>
+      </section>
+
+      <!-- Our Team Section -->
+      <section id="team">
+        <h2>Our Team</h2>
+        <p>
+          We are Team ESW, a group of dedicated engineers working together to
+          solve real-world problems through technology. Our team specializes in
+          embedded systems, sensor integration, and web development to bring
+          this Gas Analyzer project to life.
+        </p>
+      </section>
+
+      <!-- Sensor Overview Section -->
+      <section id="sensors">
+        <h2>Sensor Overview</h2>
+        <p>The Gas Analyzer project uses the following sensors:</p>
+        <div class="sensor-overview">
+          <div class="sensor-box">
+            <h2>MQ-2 Sensor</h2>
+            <p>
+              The MQ-2 is used to detect gases like LPG, Smoke, and Carbon
+              Monoxide. It provides quick detection of harmful gases in the air.
+            </p>
+          </div>
+          <div class="sensor-box">
+            <h2>MQ-7 Sensor</h2>
+            <p>
+              The MQ-7 sensor specializes in detecting Carbon Monoxide, making
+              it a crucial part of our analyzer for safety monitoring.
+            </p>
+          </div>
+          <div class="sensor-box">
+            <h2>MQ-135 Sensor</h2>
+            <p>
+              MQ-135 is designed to detect a variety of harmful gases, including
+              Ammonia, Benzene, and Alcohol, ensuring a broad range of
+              detection.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Us Section -->
+      <section id="contact">
+        <h2>Contact Us</h2>
+        <p>
+          If you'd like to learn more about our project or have any inquiries,
+          feel free to reach out to us:
+        </p>
+        <ul>
+          <li>Email: beyondinfinity261@gmail.com</li>
+          <li>Phone: +1234567890</li>
+        </ul>
+      </section>
+      <section>
+        <form action="/send-message" id="form" class="form" method="POST">
+          <label for="to">Recipient Number (with country code):</label>
+          <input type="text" id="to" name="to" placeholder="+91" required>
+          <br><br>
+          
+          <label for="body">Message:</label>
+          <input type="text" id="body" name="body" placeholder="Alert!!!" required>
+          <br><br>
+          
+          <button id ="send-message" type="submit">Send Message</button>
+        </form>
+        
+        <p id="response"></p>
+      </section>
+    </main>
+    
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 Team ESW. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>
